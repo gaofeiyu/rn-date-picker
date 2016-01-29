@@ -37,7 +37,6 @@
   "devDependencies": {
     "rc-server": "^3.3.4",
     "rmc-react-native": "~0.2.0",
-    "rn-tools": "0.x",
-    "react-timer-mixin": "^0.13.2"
+    "rn-tools": "0.x"
   }
 }
