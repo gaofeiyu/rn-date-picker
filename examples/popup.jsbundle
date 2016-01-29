@@ -1,0 +1,453 @@
+__d('rn-date-picker/examples/popup.js',function(global, require, module, exports) {  'use strict';var _reactNative=require('react-native/Libraries/react-native/react-native.js');var _reactNative2=babelHelpers.interopRequireDefault(_reactNative);var _Popup=require('rn-date-picker/src/Popup.js');var _Popup2=babelHelpers.interopRequireDefault(_Popup);var _format=require('rn-date-picker/examples/libs/format.js');var _format2=babelHelpers.interopRequireDefault(_format);
+
+
+
+
+
+var styles=_reactNative.StyleSheet.create({
+label:{
+color:'red',
+textAlign:'center',
+fontSize:20,
+fontWeight:'900',
+lineHeight:28},
+
+button:{
+alignItems:'center',
+justifyContent:'center',
+margin:5,
+height:40,
+borderRadius:3,
+backgroundColor:'darkgray'},
+
+buttonText:{
+fontSize:13,
+color:'#fff'}});
+
+
+
+var PopupExample=_reactNative2.default.createClass({displayName:'PopupExample',
+getInitialState:function(){
+return {
+visible:false,
+date:new Date()};},
+
+
+getFormatDate:function(fmt){
+if(this.state.date){
+return (0,_format2.default)(this.state.date,fmt);}
+
+return " ";},
+
+onDismiss:function(){
+this.setState({visible:false});},
+
+onChange:function(date){
+this.setState({
+visible:false,
+date:date});},
+
+
+render:function(){var _this=this;
+return (
+_reactNative2.default.createElement(_reactNative.View,{style:{flex:1,backgroundColor:'#F5F5F9'}},
+_reactNative2.default.createElement(_reactNative.TouchableHighlight,{delayPressOut:1,style:styles.button,
+underlayColor:'gray',
+onPress:function(){return _this.setState({visible:true});}},
+_reactNative2.default.createElement(_reactNative.Text,{style:styles.buttonText},this.getFormatDate("yyyy-MM-dd hh:mm"))),
+
+_reactNative2.default.createElement(_Popup2.default,{
+visible:this.state.visible,
+date:this.state.date,
+onDismiss:this.onDismiss,
+onChange:this.onChange})));}});
+
+
+
+
+
+_reactNative.AppRegistry.registerComponent('popup',function(){return PopupExample;});
+});
+__d('rn-date-picker/src/Popup.js',function(global, require, module, exports) {  'use strict';var _reactNative=require('react-native/Libraries/react-native/react-native.js');var _reactNative2=babelHelpers.interopRequireDefault(_reactNative);var _rnModal=require('rn-modal/src/index.js');var _rnModal2=babelHelpers.interopRequireDefault(_rnModal);var _index=require('rn-date-picker/src/index.js');var _index2=babelHelpers.interopRequireDefault(_index);
+
+
+
+
+
+var noop=function(){};
+
+var PopupDatePicker=_reactNative2.default.createClass({displayName:'PopupDatePicker',
+propTypes:{
+visible:_reactNative.PropTypes.bool,
+okText:_reactNative.PropTypes.string,
+dismissText:_reactNative.PropTypes.string,
+onChange:_reactNative.PropTypes.func,
+onPickerChange:_reactNative.PropTypes.func,
+onDismiss:_reactNative.PropTypes.func,
+onVisibleChange:_reactNative.PropTypes.func,
+onPickerChange:_reactNative.PropTypes.func,
+styles:_reactNative.PropTypes.object},
+
+getDefaultProps:function(){
+return {
+okText:'Ok',
+dismissText:'Dismiss',
+onChange:noop,
+onPickerChange:noop,
+onDismiss:noop,
+onVisibleChange:noop,
+onPickerChange:noop,
+styles:{}};},
+
+
+getInitialState:function(){
+return {};},
+
+componentWillReceiveProps:function(_ref){var visible=_ref.visible;
+if(this.props.visible!==visible){
+this.props.onVisibleChange(visible);}},
+
+
+onChange:function(){
+this.props.onChange(this.state.date);},
+
+onPickerChange:function(date){
+this.setState({date:date});
+this.props.onPickerChange(date);},
+
+onDismiss:function(){
+if(this.props.visible){
+this.props.onDismiss();}},
+
+
+render:function(){var _this=this;
+var state=this.state;
+var props=this.props;
+var customStyle=_reactNative.StyleSheet.create(props.styles);
+return _reactNative2.default.createElement(_rnModal2.default,{visible:props.visible,onDismiss:this.onDismiss},
+_reactNative2.default.createElement(_reactNative.View,{style:[styles.container,customStyle.container]},
+_reactNative2.default.createElement(_reactNative.View,{style:[styles.toolbar,customStyle.toolbar]},
+_reactNative2.default.createElement(_reactNative.TouchableOpacity,{style:[styles.button,customStyle.button],activeOpacity:1,onPress:function(){return _this.onDismiss();}},
+_reactNative2.default.createElement(_reactNative.Text,{style:[styles.buttonText,customStyle.buttonText]},props.dismissText)),
+
+_reactNative2.default.createElement(_reactNative.View,{style:{flex:.3}}),
+_reactNative2.default.createElement(_reactNative.TouchableOpacity,{style:[styles.button,customStyle.button],activeOpacity:1,onPress:function(){return _this.onChange();}},
+_reactNative2.default.createElement(_reactNative.Text,{style:[styles.buttonText,customStyle.buttonText]},props.okText))),
+
+
+_reactNative2.default.createElement(_index2.default,{
+defaultDate:props.defaultDate,
+date:state.date,
+mode:props.mode,
+onDateChange:this.onPickerChange,
+minDate:props.minDate,
+maxDate:props.maxDate,
+minuteInterval:props.minuteInterval,
+timeZoneOffsetInMinutes:props.timeZoneOffsetInMinutes})));}});
+
+
+
+
+
+
+var styles=_reactNative.StyleSheet.create({
+container:{
+flexDirection:'column',
+backgroundColor:'#FFF',
+height:240},
+
+toolbar:{
+borderBottomWidth:1,
+borderBottomColor:'#E6E6E6',
+flexDirection:'row'},
+
+button:{
+flex:.35,
+alignItems:'center',
+height:40,
+justifyContent:'center'},
+
+buttonText:{
+color:'#0ae',
+fontSize:16}});
+
+
+
+module.exports=PopupDatePicker;
+});
+__d('rn-modal/src/index.js',function(global, require, module, exports) {  'use strict';var _reactNative=require('react-native/Libraries/react-native/react-native.js');var _reactNative2=babelHelpers.interopRequireDefault(_reactNative);
+
+
+
+var screen=_reactNative.Dimensions.get('window');
+
+var styles=_reactNative.StyleSheet.create({
+
+transparent:{
+backgroundColor:'transparent'},
+
+
+absolute:{
+position:"absolute",
+top:0,
+bottom:0,
+left:0,
+right:0}});
+
+
+
+
+var Modal=_reactNative2.default.createClass({displayName:'Modal',
+
+propTypes:{
+visible:_reactNative2.default.PropTypes.bool,
+animated:_reactNative2.default.PropTypes.bool,
+onDismiss:_reactNative2.default.PropTypes.func},
+
+
+getDefaultProps:function(){
+return {
+visible:false,
+animated:true};},
+
+
+
+getInitialState:function(){
+return {
+position:new _reactNative.Animated.Value(screen.height),
+backdropOpacity:new _reactNative.Animated.Value(0),
+visible:false,
+isAnimateClose:false,
+isAnimateOpen:false,
+height:0,
+width:0};},
+
+
+
+componentWillReceiveProps:function(props){
+if(typeof props.visible=="undefined")return;
+if(props.visible)
+this.open();else 
+
+this.close();},
+
+
+animateBackdropOpen:function(){var _this=this;
+
+if(this.state.isAnimateBackdrop){
+this._animBackdrop.stop();
+this.state.isAnimateBackdrop=false;}
+
+
+this.state.isAnimateBackdrop=true;
+this._animBackdrop=_reactNative.Animated.timing(
+this.state.backdropOpacity,
+{
+toValue:.5,
+duration:this.props.animated?200:0});
+
+
+this._animBackdrop.start(function(){
+_this.state.isAnimateBackdrop=false;});},
+
+
+
+animateBackdropClose:function(){var _this2=this;
+if(this.state.isAnimateBackdrop){
+this._animBackdrop.stop();
+this.state.isAnimateBackdrop=false;}
+
+
+this.state.isAnimateBackdrop=true;
+this._animBackdrop=_reactNative.Animated.timing(
+this.state.backdropOpacity,
+{
+toValue:0,
+duration:this.props.animated?200:0});
+
+
+this._animBackdrop.start(function(){
+_this2.state.isAnimateBackdrop=false;});},
+
+
+
+
+
+
+animateOpen:function(){var _this3=this;
+if(this.state.isAnimateClose){
+this.state.animClose.stop();
+this.state.isAnimateClose=false;}
+
+
+
+this.animateBackdropOpen();
+
+this.state.positionDest=this.state.containerHeight-this.state.height;
+
+this.state.isAnimateOpen=true;
+
+this._animOpen=_reactNative.Animated.timing(
+this.state.position,
+{
+toValue:this.state.positionDest,
+duration:this.props.animated?200:0,
+easing:_reactNative.Easing.out(_reactNative.Easing.cubic)});
+
+
+this._animOpen.start(function(){
+_this3.state.isAnimateOpen=false;
+_this3.state.visible=true;});},
+
+
+
+
+
+
+animateClose:function(){var _this4=this;
+if(this.state.isAnimateOpen){
+this._animOpen.stop();
+this.state.isAnimateOpen=false;}
+
+
+
+this.animateBackdropClose();
+
+this.state.isAnimateClose=true;
+this.state.animClose=_reactNative.Animated.timing(
+this.state.position,
+{
+toValue:this.state.containerHeight,
+duration:this.props.animated?200:0,
+easing:_reactNative.Easing.out(_reactNative.Easing.cubic)});
+
+
+this.state.animClose.start(function(){
+if(_this4.props.onDismiss)_this4.props.onDismiss();
+_this4.setState({
+isAnimateClose:false,
+visible:false});});},
+
+
+
+
+
+
+
+onViewLayout:function(evt){
+this.state.containerHeight=evt.nativeEvent.layout.height;
+this.state.containerWidth=evt.nativeEvent.layout.width;
+if(this.state.height&&this._onViewLayoutCalculated)this._onViewLayoutCalculated();},
+
+onModalViewLayout:function(evt){
+this.state.height=evt.nativeEvent.layout.height;
+this.state.width=evt.nativeEvent.layout.width;
+if(this.state.containerHeight&&this._onViewLayoutCalculated)this._onViewLayoutCalculated();},
+
+
+
+
+renderBackdrop:function(){
+var backdrop=[];
+backdrop=
+_reactNative2.default.createElement(_reactNative.TouchableWithoutFeedback,{onPress:this.close},
+_reactNative2.default.createElement(_reactNative.Animated.View,{style:[styles.absolute,{backgroundColor:'#000',opacity:this.state.backdropOpacity}]}));
+
+
+
+return backdrop;},
+
+
+
+
+
+render:function(){
+var visible=this.state.visible||this.state.isAnimateOpen||this.state.isAnimateClose;
+
+if(!visible)return _reactNative2.default.createElement(_reactNative.View,null);
+
+var backdrop=this.renderBackdrop();
+var offsetX=(screen.width-this.state.width)/2;
+return (
+_reactNative2.default.createElement(_reactNative.View,{style:[styles.transparent,styles.absolute],onLayout:this.onViewLayout,pointerEvents:'box-none'},
+backdrop,
+_reactNative2.default.createElement(_reactNative.Animated.View,{
+onLayout:this.onModalViewLayout,
+style:[this.props.style,{transform:[{translateY:this.state.position},{translateX:offsetX}]}]},
+this.props.children)));},
+
+
+
+
+
+open:function(){var _this5=this;
+if(!this.state.isAnimateOpen&&(!this.state.visible||this.state.isAnimateClose)){
+this._onViewLayoutCalculated=function(){
+_this5.setState({});
+_this5.animateOpen();};
+
+this.setState({isAnimateOpen:true});}},
+
+
+
+close:function(){
+if(this.state.visible){
+this.animateClose();}}});
+
+
+
+
+module.exports=Modal;
+});
+__d('rn-date-picker/src/index.js',function(global, require, module, exports) {  'use strict';var _reactNative=require('react-native/Libraries/react-native/react-native.js');var _reactNative2=babelHelpers.interopRequireDefault(_reactNative);
+
+
+
+var noop=function(){};
+
+var DatePicker=_reactNative2.default.createClass({displayName:'DatePicker',
+getDefaultProps:function(){
+return {
+defaultDate:new Date(),
+onDateChange:noop};},
+
+
+onDateChange:function(date){
+this.props.onDateChange(date);},
+
+render:function(){
+var props=this.props;
+var date=props.date||props.defaultDate;
+return _reactNative2.default.createElement(_reactNative.DatePickerIOS,{
+date:date,
+mode:props.mode,
+onDateChange:this.onDateChange,
+minimumDate:props.minDate,
+maximumDate:props.maxDate,
+minuteInterval:props.minuteInterval,
+timeZoneOffsetInMinutes:props.timeZoneOffsetInMinutes});}});
+
+
+
+
+module.exports=DatePicker;
+});
+__d('rn-date-picker/examples/libs/format.js',function(global, require, module, exports) {  module.exports=function(date,fmt){
+var o={
+"M+":date.getMonth()+1,
+"d+":date.getDate(),
+"h+":date.getHours(),
+"m+":date.getMinutes(),
+"s+":date.getSeconds(),
+"q+":Math.floor((date.getMonth()+3)/3),
+"S":date.getMilliseconds()};
+
+if(/(y+)/.test(fmt))
+fmt=fmt.replace(RegExp.$1,(date.getFullYear()+"").substr(4-RegExp.$1.length));
+for(var k in o){
+if(new RegExp("("+k+")").test(fmt))
+fmt=fmt.replace(RegExp.$1,RegExp.$1.length==1?o[k]:("00"+o[k]).substr((""+o[k]).length));}
+return fmt;};
+});
+;require("rn-date-picker/examples/popup.js");
+__SSTOKENSTRING = "@generated SignedSource<<eccb25c64c5e6428f8c81bbe5da8f8b2>>";

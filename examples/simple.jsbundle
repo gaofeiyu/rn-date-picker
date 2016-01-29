@@ -1,0 +1,94 @@
+__d('rn-date-picker/examples/simple.js',function(global, require, module, exports) {  'use strict';var _reactNative=require('react-native/Libraries/react-native/react-native.js');var _reactNative2=babelHelpers.interopRequireDefault(_reactNative);var _rnDatePicker=require('rn-date-picker/src/index.js');var _rnDatePicker2=babelHelpers.interopRequireDefault(_rnDatePicker);var _format=require('rn-date-picker/examples/libs/format.js');var _format2=babelHelpers.interopRequireDefault(_format);
+
+
+
+
+
+var styles=_reactNative.StyleSheet.create({
+label:{
+color:'red',
+textAlign:'center',
+fontSize:20,
+fontWeight:'900',
+lineHeight:28}});
+
+
+
+var SimpleExample=_reactNative2.default.createClass({displayName:'SimpleExample',
+getInitialState:function(){
+return {
+date:new Date()};},
+
+
+getFormatDate:function(fmt){
+if(this.state.date){
+return (0,_format2.default)(this.state.date,fmt);}
+
+return " ";},
+
+render:function(){var _this=this;
+return (
+_reactNative2.default.createElement(_reactNative.View,{style:{flex:1,backgroundColor:'#F5F5F9'}},
+_reactNative2.default.createElement(_reactNative.Text,{style:styles.label},this.getFormatDate("yyyy-MM-dd hh:mm")),
+_reactNative2.default.createElement(_rnDatePicker2.default,{date:this.state.date,onDateChange:function(date){return _this.setState({date:date});}}),
+_reactNative2.default.createElement(_reactNative.Text,{style:styles.label},this.getFormatDate("hh:mm")),
+_reactNative2.default.createElement(_rnDatePicker2.default,{mode:'time',date:this.state.date,onDateChange:function(date){return _this.setState({date:date});}})));}});
+
+
+
+
+
+_reactNative.AppRegistry.registerComponent('simple',function(){return SimpleExample;});
+});
+__d('rn-date-picker/src/index.js',function(global, require, module, exports) {  'use strict';var _reactNative=require('react-native/Libraries/react-native/react-native.js');var _reactNative2=babelHelpers.interopRequireDefault(_reactNative);
+
+
+
+var noop=function(){};
+
+var DatePicker=_reactNative2.default.createClass({displayName:'DatePicker',
+getDefaultProps:function(){
+return {
+defaultDate:new Date(),
+onDateChange:noop};},
+
+
+onDateChange:function(date){
+this.props.onDateChange(date);},
+
+render:function(){
+var props=this.props;
+var date=props.date||props.defaultDate;
+return _reactNative2.default.createElement(_reactNative.DatePickerIOS,{
+date:date,
+mode:props.mode,
+onDateChange:this.onDateChange,
+minimumDate:props.minDate,
+maximumDate:props.maxDate,
+minuteInterval:props.minuteInterval,
+timeZoneOffsetInMinutes:props.timeZoneOffsetInMinutes});}});
+
+
+
+
+module.exports=DatePicker;
+});
+__d('rn-date-picker/examples/libs/format.js',function(global, require, module, exports) {  module.exports=function(date,fmt){
+var o={
+"M+":date.getMonth()+1,
+"d+":date.getDate(),
+"h+":date.getHours(),
+"m+":date.getMinutes(),
+"s+":date.getSeconds(),
+"q+":Math.floor((date.getMonth()+3)/3),
+"S":date.getMilliseconds()};
+
+if(/(y+)/.test(fmt))
+fmt=fmt.replace(RegExp.$1,(date.getFullYear()+"").substr(4-RegExp.$1.length));
+for(var k in o){
+if(new RegExp("("+k+")").test(fmt))
+fmt=fmt.replace(RegExp.$1,RegExp.$1.length==1?o[k]:("00"+o[k]).substr((""+o[k]).length));}
+return fmt;};
+});
+;require("rn-date-picker/examples/simple.js");
+__SSTOKENSTRING = "@generated SignedSource<<8fe1594d3cfaf07406b19abf5bcea4c2>>";
