@@ -4,6 +4,8 @@ React Native Date Select Component
 
 ## Screenshot
 
+<img src="https://cloud.githubusercontent.com/assets/50817/12666289/41c33d5e-c67a-11e5-9d32-c7a92c693b5d.png" width="320"/>
+
 ## Development
 
 ```
