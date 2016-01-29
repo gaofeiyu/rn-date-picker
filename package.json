@@ -1,0 +1,43 @@
+{
+  "name": "rn-date-picker",
+  "version": "0.1.0",
+  "description": "React Native Date Select Component",
+  "keywords": [
+    "react",
+    "react-native",
+    "react-rn-date-picker",
+    "rn-date-picker"
+  ],
+  "homepage": "https://github.com/react-component/rn-date-picker",
+  "maintainers": [
+    "swainet@126.com"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:react-component/rn-date-picker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/react-component/rn-date-picker/issues"
+  },
+  "licenses": "MIT",
+  "main": "./src/index",
+  "config": {
+    "port": 8000
+  },
+  "scripts": {
+    "start": "rn-tools run build && ./node_modules/rc-server/bin/start.js",
+    "build": "rn-tools run build",
+    "gh-pages": "rn-tools run gh-pages",
+    "pub": "rn-tools run pub",
+    "lint": "rn-tools run lint"
+  },
+  "dependencies": {
+    "rn-modal": "~0.1.0"
+  },
+  "devDependencies": {
+    "rc-server": "^3.3.4",
+    "rmc-react-native": "~0.2.0",
+    "rn-tools": "0.x",
+    "react-timer-mixin": "^0.13.2"
+  }
+}
