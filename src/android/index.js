@@ -22,11 +22,9 @@ export default React.createClass({
     };
   },
   onChange(date){
-    console.log('component onChange, date is: ', date.toLocaleDateString());
     this.props.onChange(date);
   },
   onDismiss() {
-    console.log('component onDismiss');
     this.props.onDismiss();
   },
   componentWillReceiveProps(props) {

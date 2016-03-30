@@ -10,7 +10,8 @@
   ],
   "homepage": "https://github.com/react-component/rn-date-picker",
   "maintainers": [
-    "swainet@126.com"
+    "swainet@126.com",
+    "kgtong1992@gmail.com"
   ],
   "repository": {
     "type": "git",
@@ -20,7 +21,7 @@
     "url": "https://github.com/react-component/rn-date-picker/issues"
   },
   "licenses": "MIT",
-  "main": "index.js",
+  "main": "index",
   "config": {
     "port": 8000
   },

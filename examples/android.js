@@ -1,7 +1,7 @@
 'use strict';
 
 import React, { AppRegistry, View, StyleSheet, Text, TouchableWithoutFeedback } from 'react-native';
-import { DatePicker } from 'rn-date-picker';
+import DatePicker from 'rn-date-picker';
 import Format from './libs/format';
 
 var DatePickerAndroidExample = React.createClass({

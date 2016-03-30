@@ -1,7 +1,7 @@
 'use strict';
 
 import React, { AppRegistry, View, StyleSheet, TouchableHighlight, Text } from 'react-native';
-import { PopupDatePicker } from 'rn-date-picker';
+import PopupDatePicker from 'rn-date-picker/src/ios/popup';
 import Format from './libs/format';
 
 const styles = StyleSheet.create({
