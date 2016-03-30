@@ -6,7 +6,7 @@ import DatePicker from './index';
 
 const noop = () => {};
 
-const PopupDatePicker = React.createClass({
+export default React.createClass({
   propTypes: {
     visible: PropTypes.bool,
     okText: PropTypes.string,
@@ -15,7 +15,6 @@ const PopupDatePicker = React.createClass({
     onPickerChange: PropTypes.func,
     onDismiss: PropTypes.func,
     onVisibleChange: PropTypes.func,
-    onPickerChange: PropTypes.func,
     styles: PropTypes.object
   },
   getDefaultProps() { 
@@ -26,7 +25,6 @@ const PopupDatePicker = React.createClass({
       onPickerChange: noop,
       onDismiss: noop,
       onVisibleChange: noop,
-      onPickerChange: noop,
       styles: {}
     };
   },
@@ -79,7 +77,6 @@ const PopupDatePicker = React.createClass({
   }
 });
 
-
 var styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
@@ -102,5 +99,3 @@ var styles = StyleSheet.create({
     fontSize: 16
   }
 });
-
-module.exports = PopupDatePicker;

@@ -20,7 +20,7 @@
     "url": "https://github.com/react-component/rn-date-picker/issues"
   },
   "licenses": "MIT",
-  "main": "./src/index",
+  "main": "index.js",
   "config": {
     "port": 8000
   },
@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "rc-server": "^3.3.4",
-    "rmc-react-native": "~0.2.0",
+    "rn-core": "~0.3.0",
     "rn-tools": "0.x"
   }
 }

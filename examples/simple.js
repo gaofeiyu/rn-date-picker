@@ -1,7 +1,7 @@
 'use strict';
 
 import React, { AppRegistry, View, StyleSheet, Text } from 'react-native';
-import DatePicker from 'rn-date-picker';
+import { DatePicker } from 'rn-date-picker';
 import Format from './libs/format';
 
 const styles = StyleSheet.create({

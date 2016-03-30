@@ -1,16 +1,27 @@
+
+
 # rn-date-picker
 
 React Native Date Select Component
 
 ## Screenshot
 
-<img src="https://cloud.githubusercontent.com/assets/50817/12666289/41c33d5e-c67a-11e5-9d32-c7a92c693b5d.png" width="320"/>
++ iOS
+
+  <img src="https://cloud.githubusercontent.com/assets/50817/12666289/41c33d5e-c67a-11e5-9d32-c7a92c693b5d.png" width="320"/>
+
++ Android
+
+    [![rn-date-picker](https://os.alipayobjects.com/rmsportal/eYutFFnThYHrIwi.jpg)](https://npmjs.org/package/rn-date-picker)
+    
 
 ## Development
 
 ```
-npm install
-npm start
+ 
+  npm install
+  npm start
+
 ```
 
 ## Example
@@ -21,7 +32,8 @@ online example: http://react-component.github.io/rn-date-picker/
 
 ## install
 
-[![rn-date-picker](https://nodei.co/npm/rn-date-picker.png)](https://npmjs.org/package/rn-date-picker)
+ [![rn-date-picker](https://nodei.co/npm/rn-date-picker.png)](https://npmjs.org/package/rn-date-picker)
+    
 
 ## Usage
 see example
@@ -41,21 +53,33 @@ see example
 
 ### rn-date-picker/src/Popup props
 
-| name     | description    | type     | default      |
-|----------|----------------|----------|--------------|
-|defaultDate | default selected date. | Date | now |
-|date | The currently selected date. | Date |  |
-|onPickerChange | Date inside picker change handler. | Function(date: Date) | '' |
-|mode | The date picker mode. | String | 'date' enum('date', 'time', 'datetime') |
-|minDate | min date | Date | System |
-|maxDate | max date | Date | System |
-|onChange | exec on ok | Function(date: Date) |  |
-|onDismiss | exec on dismiss | function |  |
-|okText | ok button text | String | 'Ok' |
-|dismissText | dismiss button text | String | 'Dismiss' |
-|visible | whether pop picker is visible | Boolean | |
-|onVisibleChange | called when pop picker visible change | Function | |
++ iOS
 
+  | name     | description    | type     | default      |
+  |----------|----------------|----------|--------------|
+  |defaultDate | default selected date. | Date | now |
+  |date | The currently selected date. | Date |  |
+  |onPickerChange | Date inside picker change handler. | Function(date: Date) | '' |
+  |mode | The date picker mode. | String | 'date' enum('date', 'time', 'datetime') |
+  |minDate | min date | Date | System |
+  |maxDate | max date | Date | System |
+  |onChange | exec on ok | Function(date: Date) |  |
+  |onDismiss | exec on dismiss | function |  |
+  |okText | ok button text | String | 'Ok' |
+  |dismissText | dismiss button text | String | 'Dismiss' |
+  |visible | whether pop picker is visible | Boolean | |
+  |onVisibleChange | called when pop picker visible change | Function | |
+  
++ Android
+
+  | name     | description    | type     | default      |
+  |----------|----------------|----------|--------------|
+  |defaultDate | default selected date. | Date | now |
+  |minDate | min date | Date | System |
+  |maxDate | max date | Date | System |
+  |onChange | exec on complete | Function(date: Date) |  |
+  |onDismiss | exec on dismiss | function |  |
+  |visible | whether datepicker is visible | Boolean | |
 
 ## License
 
