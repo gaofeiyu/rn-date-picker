@@ -1,7 +1,7 @@
 {
   "name": "rn-date-picker",
-  "version": "0.1.0",
-  "description": "React Native Date Select Component",
+  "version": "0.2.0",
+  "description": "React Native Date Select Component, fit for rn 0.21.0",
   "keywords": [
     "react",
     "react-native",
