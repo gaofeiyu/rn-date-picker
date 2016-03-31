@@ -33,7 +33,7 @@ const PopupExample = React.createClass({
       date: new Date('2015-12-12'),
       minDate: new Date('2014-12-12'),
       maxDate: new Date('2019-12-12'),
-      mode: 'date'
+      mode: 'datetime'
     };
   },
   getFormatDate(fmt) {

@@ -1,5 +1,6 @@
 
 
+
 # rn-date-picker
 
 React Native Date Select Component
@@ -69,9 +70,12 @@ see example
 
   | name     | description    | type     | default      |
   |----------|----------------|----------|--------------|
-  |defaultDate | default selected date. | Date | now |
+  |date | selected date. | Date | now |
+  |hour | the hour to show on the timepicker | Number | Now  |
+  |minute | the minute to show  on the  timepicker | Number | Now  |
   |minDate | min date | Date | System |
   |maxDate | max date | Date | System |
+  |mode | The date picker mode. | String | 'date' enum('date', 'time', 'datetime') |
   |onChange | exec on complete | Function(date: Date) |  |
   |onDismiss | exec on dismiss | function |  |
   |visible | whether datepicker is visible | Boolean | |

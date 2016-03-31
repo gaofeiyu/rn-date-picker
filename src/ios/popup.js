@@ -2,7 +2,7 @@
 
 import React, { PropTypes, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import Modal from 'rn-modal';
-import DatePicker from './origin';
+import DatePicker from './plain';
 
 const noop = () => {};
 
