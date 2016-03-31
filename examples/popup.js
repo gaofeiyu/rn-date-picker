@@ -1,7 +1,7 @@
 'use strict';
 
 import React, { AppRegistry, View, StyleSheet, TouchableHighlight, Text } from 'react-native';
-import PopupDatePicker from 'rn-date-picker/src/ios/popup';
+import PopupDatePicker from 'rn-date-picker';
 import Format from './libs/format';
 
 const styles = StyleSheet.create({
@@ -30,7 +30,10 @@ const PopupExample = React.createClass({
   getInitialState() {
     return {
       visible: false,
-      date: new Date()
+      date: new Date('2015-12-12'),
+      minDate: new Date('2014-12-12'),
+      maxDate: new Date('2019-12-12'),
+      mode: 'date'
     };
   },
   getFormatDate(fmt) {
@@ -60,7 +63,10 @@ const PopupExample = React.createClass({
           visible={this.state.visible} 
           date={this.state.date}
           onDismiss={this.onDismiss}
-          onChange={this.onChange} />
+          onChange={this.onChange}
+          minDate={this.state.minDate}
+          maxDate={this.state.maxDate}
+          mode={this.state.mode}/>
       </View>
     );
   }

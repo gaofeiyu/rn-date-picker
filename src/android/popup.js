@@ -10,12 +10,12 @@ export default React.createClass({
     maxDate: PropTypes.object,
     onChange: PropTypes.func,
     onDismiss: PropTypes.func,
-    defaultDate: PropTypes.object,
+    date: PropTypes.object,
     visible: PropTypes.bool
   },
   getDefaultProps() {
     return {
-      defaultDate: new Date(),
+      date: new Date(),
       onChange: noop,
       onDismiss: noop,
       visible: false
@@ -32,7 +32,7 @@ export default React.createClass({
 
     if (props.visible) {
       this.showPicker({
-        date: this.props.defaultDate,
+        date: this.props.date,
         minDate: this.props.minDate,
         maxDate: this.props.maxDate
       });
@@ -56,4 +56,3 @@ export default React.createClass({
     return null;
   },
 });
-

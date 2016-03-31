@@ -1,3 +1,3 @@
-import DatePicker from './src/android/index';
+import DatePicker from './src/android/popup';
 
 module.exports = DatePicker;

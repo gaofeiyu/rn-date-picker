@@ -17,6 +17,7 @@ export default React.createClass({
   render() {
     const props = this.props;
     const date = props.date || props.defaultDate;
+    
     return (<DatePickerIOS
       date={date}
       mode={props.mode}

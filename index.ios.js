@@ -1,3 +1,3 @@
-import DatePicker from './src/ios/index';
+import DatePicker from './src/ios/popup';
 
 module.exports = DatePicker;
