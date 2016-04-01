@@ -1,8 +1,25 @@
-__d('rn-date-picker/examples/popup.js',function(global, require, module, exports) {  'use strict';var _reactNative=require('react-native/Libraries/react-native/react-native.js');var _reactNative2=babelHelpers.interopRequireDefault(_reactNative);var _Popup=require('rn-date-picker/src/Popup.js');var _Popup2=babelHelpers.interopRequireDefault(_Popup);var _format=require('rn-date-picker/examples/libs/format.js');var _format2=babelHelpers.interopRequireDefault(_format);
+__d('rn-date-picker/examples/libs/format.js',function(global, require, module, exports) {  module.exports=function(date,fmt){
+var o={
+"M+":date.getMonth()+1,
+"d+":date.getDate(),
+"h+":date.getHours(),
+"m+":date.getMinutes(),
+"s+":date.getSeconds(),
+"q+":Math.floor((date.getMonth()+3)/3),
+"S":date.getMilliseconds()};
 
+if(/(y+)/.test(fmt))
+fmt=fmt.replace(RegExp.$1,(date.getFullYear()+"").substr(4-RegExp.$1.length));
+for(var k in o){
+if(new RegExp("("+k+")").test(fmt))
+fmt=fmt.replace(RegExp.$1,RegExp.$1.length==1?o[k]:("00"+o[k]).substr((""+o[k]).length));}
+return fmt;};
+});
+__d('rn-date-picker/examples/popup.js',function(global, require, module, exports) {  'use strict';
 
-
-
+var _reactNative=require('react-native/Libraries/react-native/react-native.js');var _reactNative2=babelHelpers.interopRequireDefault(_reactNative);
+var _rnDatePicker=require('rn-date-picker/index.ios.js');var _rnDatePicker2=babelHelpers.interopRequireDefault(_rnDatePicker);
+var _format=require('rn-date-picker/examples/libs/format.js');var _format2=babelHelpers.interopRequireDefault(_format);
 
 var styles=_reactNative.StyleSheet.create({
 label:{
@@ -30,7 +47,10 @@ var PopupExample=_reactNative2.default.createClass({displayName:'PopupExample',
 getInitialState:function(){
 return {
 visible:false,
-date:new Date()};},
+date:new Date('2015-12-12'),
+minDate:new Date('2014-12-12'),
+maxDate:new Date('2019-12-12'),
+mode:'datetime'};},
 
 
 getFormatDate:function(fmt){
@@ -56,11 +76,14 @@ underlayColor:'gray',
 onPress:function(){return _this.setState({visible:true});}},
 _reactNative2.default.createElement(_reactNative.Text,{style:styles.buttonText},this.getFormatDate("yyyy-MM-dd hh:mm"))),
 
-_reactNative2.default.createElement(_Popup2.default,{
+_reactNative2.default.createElement(_rnDatePicker2.default,{
 visible:this.state.visible,
 date:this.state.date,
 onDismiss:this.onDismiss,
-onChange:this.onChange})));}});
+onChange:this.onChange,
+minDate:this.state.minDate,
+maxDate:this.state.maxDate,
+mode:this.state.mode})));}});
 
 
 
@@ -68,15 +91,19 @@ onChange:this.onChange})));}});
 
 _reactNative.AppRegistry.registerComponent('popup',function(){return PopupExample;});
 });
-__d('rn-date-picker/src/Popup.js',function(global, require, module, exports) {  'use strict';var _reactNative=require('react-native/Libraries/react-native/react-native.js');var _reactNative2=babelHelpers.interopRequireDefault(_reactNative);var _rnModal=require('rn-modal/src/index.js');var _rnModal2=babelHelpers.interopRequireDefault(_rnModal);var _index=require('rn-date-picker/src/index.js');var _index2=babelHelpers.interopRequireDefault(_index);
+__d('rn-date-picker/index.ios.js',function(global, require, module, exports) {  var _popup=require('rn-date-picker/src/ios/popup.js');var _popup2=babelHelpers.interopRequireDefault(_popup);
 
+module.exports=_popup2.default;
+});
+__d('rn-date-picker/src/ios/popup.js',function(global, require, module, exports) {  'use strict';Object.defineProperty(exports,"__esModule",{value:true});
 
+var _reactNative=require('react-native/Libraries/react-native/react-native.js');var _reactNative2=babelHelpers.interopRequireDefault(_reactNative);
+var _rnModal=require('rn-modal/src/index.js');var _rnModal2=babelHelpers.interopRequireDefault(_rnModal);
+var _plain=require('rn-date-picker/src/ios/plain.js');var _plain2=babelHelpers.interopRequireDefault(_plain);
 
+var noop=function(){};exports.default=
 
-
-var noop=function(){};
-
-var PopupDatePicker=_reactNative2.default.createClass({displayName:'PopupDatePicker',
+_reactNative2.default.createClass({displayName:'popup',
 propTypes:{
 visible:_reactNative.PropTypes.bool,
 okText:_reactNative.PropTypes.string,
@@ -85,7 +112,6 @@ onChange:_reactNative.PropTypes.func,
 onPickerChange:_reactNative.PropTypes.func,
 onDismiss:_reactNative.PropTypes.func,
 onVisibleChange:_reactNative.PropTypes.func,
-onPickerChange:_reactNative.PropTypes.func,
 styles:_reactNative.PropTypes.object},
 
 getDefaultProps:function(){
@@ -96,7 +122,6 @@ onChange:noop,
 onPickerChange:noop,
 onDismiss:noop,
 onVisibleChange:noop,
-onPickerChange:noop,
 styles:{}};},
 
 
@@ -135,7 +160,7 @@ _reactNative2.default.createElement(_reactNative.TouchableOpacity,{style:[styles
 _reactNative2.default.createElement(_reactNative.Text,{style:[styles.buttonText,customStyle.buttonText]},props.okText))),
 
 
-_reactNative2.default.createElement(_index2.default,{
+_reactNative2.default.createElement(_plain2.default,{
 defaultDate:props.defaultDate,
 date:state.date,
 mode:props.mode,
@@ -144,7 +169,6 @@ minDate:props.minDate,
 maxDate:props.maxDate,
 minuteInterval:props.minuteInterval,
 timeZoneOffsetInMinutes:props.timeZoneOffsetInMinutes})));}});
-
 
 
 
@@ -170,14 +194,10 @@ justifyContent:'center'},
 buttonText:{
 color:'#0ae',
 fontSize:16}});
-
-
-
-module.exports=PopupDatePicker;
 });
-__d('rn-modal/src/index.js',function(global, require, module, exports) {  'use strict';var _reactNative=require('react-native/Libraries/react-native/react-native.js');var _reactNative2=babelHelpers.interopRequireDefault(_reactNative);
+__d('rn-modal/src/index.js',function(global, require, module, exports) {  'use strict';
 
-
+var _reactNative=require('react-native/Libraries/react-native/react-native.js');var _reactNative2=babelHelpers.interopRequireDefault(_reactNative);
 
 var screen=_reactNative.Dimensions.get('window');
 
@@ -399,13 +419,13 @@ this.animateClose();}}});
 
 module.exports=Modal;
 });
-__d('rn-date-picker/src/index.js',function(global, require, module, exports) {  'use strict';var _reactNative=require('react-native/Libraries/react-native/react-native.js');var _reactNative2=babelHelpers.interopRequireDefault(_reactNative);
+__d('rn-date-picker/src/ios/plain.js',function(global, require, module, exports) {  'use strict';Object.defineProperty(exports,"__esModule",{value:true});
 
+var _reactNative=require('react-native/Libraries/react-native/react-native.js');var _reactNative2=babelHelpers.interopRequireDefault(_reactNative);
 
+var noop=function(){};exports.default=
 
-var noop=function(){};
-
-var DatePicker=_reactNative2.default.createClass({displayName:'DatePicker',
+_reactNative2.default.createClass({displayName:'plain',
 getDefaultProps:function(){
 return {
 defaultDate:new Date(),
@@ -418,6 +438,7 @@ this.props.onDateChange(date);},
 render:function(){
 var props=this.props;
 var date=props.date||props.defaultDate;
+
 return _reactNative2.default.createElement(_reactNative.DatePickerIOS,{
 date:date,
 mode:props.mode,
@@ -426,28 +447,6 @@ minimumDate:props.minDate,
 maximumDate:props.maxDate,
 minuteInterval:props.minuteInterval,
 timeZoneOffsetInMinutes:props.timeZoneOffsetInMinutes});}});
-
-
-
-
-module.exports=DatePicker;
-});
-__d('rn-date-picker/examples/libs/format.js',function(global, require, module, exports) {  module.exports=function(date,fmt){
-var o={
-"M+":date.getMonth()+1,
-"d+":date.getDate(),
-"h+":date.getHours(),
-"m+":date.getMinutes(),
-"s+":date.getSeconds(),
-"q+":Math.floor((date.getMonth()+3)/3),
-"S":date.getMilliseconds()};
-
-if(/(y+)/.test(fmt))
-fmt=fmt.replace(RegExp.$1,(date.getFullYear()+"").substr(4-RegExp.$1.length));
-for(var k in o){
-if(new RegExp("("+k+")").test(fmt))
-fmt=fmt.replace(RegExp.$1,RegExp.$1.length==1?o[k]:("00"+o[k]).substr((""+o[k]).length));}
-return fmt;};
 });
 ;require("rn-date-picker/examples/popup.js");
-__SSTOKENSTRING = "@generated SignedSource<<eccb25c64c5e6428f8c81bbe5da8f8b2>>";
+__SSTOKENSTRING = "@generated SignedSource<<55a43d513cb6481fe3e6ff1c68062f56>>";

@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css" rel="stylesheet"/>
-  <title>rn-date-picker@0.1.0 - React Native Date Select Component</title>
+  <title>rn-date-picker@0.2.0 - React Native Date Select Component, fit for rn 0.21.0</title>
   <style>
     @font-face {
       font-family: octicons-anchor;
@@ -737,7 +737,7 @@
 
 <body>
 <div class="header">
-  <h1>rn-date-picker@0.1.0</h1>
+  <h1>rn-date-picker@0.2.0</h1>
 </div>
 <div class="examples">
   <h3>EXAMPLES</h3>
@@ -755,11 +755,25 @@
   <h3>README.md</h3>
   <div class="markdown-body">
     <h1>rn-date-picker<a id="user-content-rn-date-picker" name="rn-date-picker" class="anchor" aria-hidden="true" href="#rn-date-picker"><span class="octicon octicon-link"></span></a></h1><p>React Native Date Select Component</p>
-<h2>Screenshot<a id="user-content-screenshot" name="screenshot" class="anchor" aria-hidden="true" href="#screenshot"><span class="octicon octicon-link"></span></a></h2><p><img src="https://cloud.githubusercontent.com/assets/50817/12666289/41c33d5e-c67a-11e5-9d32-c7a92c693b5d.png" width="320"/></p>
-<h2>Development<a id="user-content-development" name="development" class="anchor" aria-hidden="true" href="#development"><span class="octicon octicon-link"></span></a></h2><div class="highlight"><pre><code language="undefined">npm install
-npm start</code></pre></div><h2>Example<a id="user-content-example" name="example" class="anchor" aria-hidden="true" href="#example"><span class="octicon octicon-link"></span></a></h2><p><a href="http://localhost:8081/examples/" title="null">http://localhost:8081/examples/</a></p>
+<h2>Screenshot<a id="user-content-screenshot" name="screenshot" class="anchor" aria-hidden="true" href="#screenshot"><span class="octicon octicon-link"></span></a></h2><table>
+<thead>
+<tr>
+<th>iOS</th>
+<th>Android</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://cloud.githubusercontent.com/assets/50817/12666289/41c33d5e-c67a-11e5-9d32-c7a92c693b5d.png" width="320"/></td>
+<td><img src="https://cloud.githubusercontent.com/assets/50817/14137835/4521d31e-f69c-11e5-8b14-53226f3b8416.png" width="320"/></td>
+</tr>
+</tbody>
+</table>
+<h2>Development<a id="user-content-development" name="development" class="anchor" aria-hidden="true" href="#development"><span class="octicon octicon-link"></span></a></h2><div class="highlight"><pre><code language="undefined">
+  npm install
+  npm start</code></pre></div><h2>Example<a id="user-content-example" name="example" class="anchor" aria-hidden="true" href="#example"><span class="octicon octicon-link"></span></a></h2><p><a href="http://localhost:8081/examples/" title="null">http://localhost:8081/examples/</a></p>
 <p>online example: <a href="http://react-component.github.io/rn-date-picker/" title="null">http://react-component.github.io/rn-date-picker/</a></p>
-<h2>install<a id="user-content-install" name="install" class="anchor" aria-hidden="true" href="#install"><span class="octicon octicon-link"></span></a></h2><p><a href="https://npmjs.org/package/rn-date-picker" title="null"><img src="https://nodei.co/npm/rn-date-picker.png" alt="rn-date-picker"></a></p>
+<h2>install<a id="user-content-install" name="install" class="anchor" aria-hidden="true" href="#install"><span class="octicon octicon-link"></span></a></h2><p> <a href="https://npmjs.org/package/rn-date-picker" title="null"><img src="https://nodei.co/npm/rn-date-picker.png" alt="rn-date-picker"></a></p>
 <h2>Usage<a id="user-content-usage" name="usage" class="anchor" aria-hidden="true" href="#usage"><span class="octicon octicon-link"></span></a></h2><p>see example</p>
 <h2>API<a id="user-content-api" name="api" class="anchor" aria-hidden="true" href="#api"><span class="octicon octicon-link"></span></a></h2><h3>DatePicker props<a id="user-content-datepicker-props" name="datepicker-props" class="anchor" aria-hidden="true" href="#datepicker-props"><span class="octicon octicon-link"></span></a></h3><table>
 <thead>
@@ -809,89 +823,37 @@ npm start</code></pre></div><h2>Example<a id="user-content-example" name="exampl
 </tr>
 </tbody>
 </table>
-<h3>rn-date-picker/src/Popup props<a id="user-content-rn-date-picker/src/popup-props" name="rn-date-picker/src/popup-props" class="anchor" aria-hidden="true" href="#rn-date-picker/src/popup-props"><span class="octicon octicon-link"></span></a></h3><table>
-<thead>
-<tr>
-<th>name</th>
-<th>description</th>
-<th>type</th>
-<th>default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>defaultDate</td>
-<td>default selected date.</td>
-<td>Date</td>
-<td>now</td>
-</tr>
-<tr>
-<td>date</td>
-<td>The currently selected date.</td>
-<td>Date</td>
-<td></td>
-</tr>
-<tr>
-<td>onPickerChange</td>
-<td>Date inside picker change handler.</td>
-<td>Function(date: Date)</td>
-<td>&#39;&#39;</td>
-</tr>
-<tr>
-<td>mode</td>
-<td>The date picker mode.</td>
-<td>String</td>
-<td>&#39;date&#39; enum(&#39;date&#39;, &#39;time&#39;, &#39;datetime&#39;)</td>
-</tr>
-<tr>
-<td>minDate</td>
-<td>min date</td>
-<td>Date</td>
-<td>System</td>
-</tr>
-<tr>
-<td>maxDate</td>
-<td>max date</td>
-<td>Date</td>
-<td>System</td>
-</tr>
-<tr>
-<td>onChange</td>
-<td>exec on ok</td>
-<td>Function(date: Date)</td>
-<td></td>
-</tr>
-<tr>
-<td>onDismiss</td>
-<td>exec on dismiss</td>
-<td>function</td>
-<td></td>
-</tr>
-<tr>
-<td>okText</td>
-<td>ok button text</td>
-<td>String</td>
-<td>&#39;Ok&#39;</td>
-</tr>
-<tr>
-<td>dismissText</td>
-<td>dismiss button text</td>
-<td>String</td>
-<td>&#39;Dismiss&#39;</td>
-</tr>
-<tr>
-<td>visible</td>
-<td>whether pop picker is visible</td>
-<td>Boolean</td>
-<td></td>
-</tr>
-<tr>
-<td>onVisibleChange</td>
-<td>called when pop picker visible change</td>
-<td>Function</td>
-</tr>
-</tbody>
-</table>
+<h3>rn-date-picker/src/Popup props<a id="user-content-rn-date-picker/src/popup-props" name="rn-date-picker/src/popup-props" class="anchor" aria-hidden="true" href="#rn-date-picker/src/popup-props"><span class="octicon octicon-link"></span></a></h3><ul>
+<li><p>iOS</p>
+<p>| name     | description    | type     | default      |
+|----------|----------------|----------|--------------|
+|defaultDate | default selected date. | Date | now |
+|date | The currently selected date. | Date |  |
+|onPickerChange | Date inside picker change handler. | Function(date: Date) | &#39;&#39; |
+|mode | The date picker mode. | String | &#39;date&#39; enum(&#39;date&#39;, &#39;time&#39;, &#39;datetime&#39;) |
+|minDate | min date | Date | System |
+|maxDate | max date | Date | System |
+|onChange | exec on ok | Function(date: Date) |  |
+|onDismiss | exec on dismiss | function |  |
+|okText | ok button text | String | &#39;Ok&#39; |
+|dismissText | dismiss button text | String | &#39;Dismiss&#39; |
+|visible | whether pop picker is visible | Boolean | |
+|onVisibleChange | called when pop picker visible change | Function | |</p>
+</li>
+<li><p>Android</p>
+<p>| name     | description    | type     | default      |
+|----------|----------------|----------|--------------|
+|date | selected date. | Date | now |
+|hour | the hour to show on the timepicker | Number | Now  |
+|minute | the minute to show  on the  timepicker | Number | Now  |
+|minDate | min date | Date | System |
+|maxDate | max date | Date | System |
+|mode | The date picker mode. | String | &#39;date&#39; enum(&#39;date&#39;, &#39;time&#39;, &#39;datetime&#39;) |
+|onChange | exec on complete | Function(date: Date) |  |
+|onDismiss | exec on dismiss | function |  |
+|visible | whether datepicker is visible | Boolean | |</p>
+</li>
+</ul>
 <h2>License<a id="user-content-license" name="license" class="anchor" aria-hidden="true" href="#license"><span class="octicon octicon-link"></span></a></h2><p>rn-date-picker is released under the MIT license.</p>
 
   </div>

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>simple.js - example - rn-date-picker@0.1.0</title>
+  <title>simple.js - example - rn-date-picker@0.2.0</title>
   <meta name="viewport"
         content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <meta charset="utf-8"/>
@@ -257,18 +257,18 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 <body>
 <div class="container">
   <div class="header">
-    <h1>rn-date-picker@0.1.0</h1>
+    <h1>rn-date-picker@0.2.0</h1>
 
-    <p>React Native Date Select Component</p>
+    <p>React Native Date Select Component, fit for rn 0.21.0</p>
   </div>
-  <div class="example" id="__react-content"></div><script src="https://os.alipayobjects.com/rmsportal/NrsdrrVhDIJnPUm.js"></script><script>document.getElementById("__react-content").appendChild(new AraleQRCode({text: location.hostname === "react-component.github.io" ? location.href.match(/(.+\.)(\w+)$/)[1] + "jsbundle" : location.protocol + "//10.15.91.182:8000/build/examples/simple.jsbundle"}))</script>
+  <div class="example" id="__react-content"></div><script src="https://os.alipayobjects.com/rmsportal/NrsdrrVhDIJnPUm.js"></script><script>document.getElementById("__react-content").innerHTML='<table style="width:100%;text-align:center"><tr><th>iOS</th><th>Android</th></tr><tr><td id="qr-ios"></td><td id="qr-android"></td></tr></table>';document.getElementById("qr-ios").appendChild(new AraleQRCode({text: location.hostname === "react-component.github.io" ? location.href.match(/(.+\.)(\w+)$/)[1] + "ios.bundle" : location.protocol + "//10.15.231.141:8000/build/examples/simple.ios.bundle"}));document.getElementById("qr-android").appendChild(new AraleQRCode({text: location.hostname === "react-component.github.io" ? location.href.match(/(.+\.)(\w+)$/)[1] + "android.bundle" : location.protocol + "//10.15.231.141:8000/build/examples/simple.android.bundle"}))</script>
   
   
   <div class="highlight"><pre><code language="js"><span class="hljs-pi">'use strict'</span>;
 
-<span class="hljs-keyword">import</span> React, { AppRegistry, View, StyleSheet, Text } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-native'</span>;
-<span class="hljs-keyword">import</span> DatePicker <span class="hljs-keyword">from</span> <span class="hljs-string">'rn-date-picker'</span>;
-<span class="hljs-keyword">import</span> Format <span class="hljs-keyword">from</span> <span class="hljs-string">'./libs/format'</span>;
+import React, { AppRegistry, View, StyleSheet, Text } from <span class="hljs-string">'react-native'</span>;
+import DatePicker from <span class="hljs-string">'rn-date-picker/lib/ios/plain'</span>;
+import Format from <span class="hljs-string">'./libs/format'</span>;
 
 <span class="hljs-keyword">const</span> styles = StyleSheet.create({
   label: {
@@ -300,12 +300,12 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
         <span class="hljs-tag">&lt;<span class="hljs-title">Text</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">{styles.label}</span>&gt;</span>{this.getFormatDate("hh:mm")}<span class="hljs-tag">&lt;/<span class="hljs-title">Text</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-title">DatePicker</span> <span class="hljs-attribute">mode</span>=<span class="hljs-value">"time"</span> <span class="hljs-attribute">date</span>=<span class="hljs-value">{this.state.date}</span> <span class="hljs-attribute">onDateChange</span>=<span class="hljs-value">{(date)=</span>&gt;</span>this.setState({date})} /&gt;
       <span class="hljs-tag">&lt;/<span class="hljs-title">View</span>&gt;</span>
-    )</span>;
+    );
   }
 });
 
-AppRegistry.registerComponent(<span class="hljs-string">'simple'</span>, () =&gt; SimpleExample);
-</code></pre></div>
+AppRegistry.registerComponent('simple', () =&gt; SimpleExample);
+</span></code></pre></div>
 </div>
 <a href="https://github.com/react-component/rn-date-picker">
   <img style="position: absolute; top: 0; right: 0; border: 0;"
